@@ -1,5 +1,5 @@
 import re
-
+from html import unescape
 
 import requests
 
@@ -15,6 +15,10 @@ print("Title:", data[0]["title"])
 print("Date: ", data[0]["date"])
 print("Image:", data[0]["url"])
 print("-" * 60)
-print(data[0]["explanation"])
+#print(data[0]["explanation"])
+explanation = data[0]["explanation"]
+explanation = re.sub(r"<br\s*/?>", "\n", explanation)
+explanation = re.sub(r"<[^>]+>", "", explanation)
+print(unescape(explanation).strip())
 print("=" * 60)
 
