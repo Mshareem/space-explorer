@@ -1,5 +1,6 @@
 import re
 from html import unescape
+import webbrowser
 
 import requests
 
@@ -20,5 +21,6 @@ explanation = data[0]["explanation"]
 explanation = re.sub(r"<br\s*/?>", "\n", explanation)
 explanation = re.sub(r"<[^>]+>", "", explanation)
 print(unescape(explanation).strip())
+webbrowser.open(data[0]["hdurl"])
 print("=" * 60)
 
